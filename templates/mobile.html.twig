@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="bradcam_area">
+        <div class="bradcam_shap">
+            <img src="img/ilstrator/bradcam_ils.png" alt="">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text text-center">
+                        <h3> Mobile Projects PFA  </h3>
+                        <nav class="brad_cam_lists">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="{{ path('home') }}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">About</li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /bradcam_area  -->
+    <div class="col-md-12">
+        <div class="card card-plain">
+            <div class="card-header card-header-primary">
+                <h4 class="card-title mt-0"> Liste des projets Mobile PFA </h4>
+                <p class="card-category"> Choisir Votre projet </p>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="">
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Titre Porjet
+                        </th>
+                        <th>
+                            Encadreur
+                        </th>
+                        <th>
+                            Outils
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Etat
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                        </thead>
+                        <tbody>
+                        {% for projet in lesProjets %}
+                            <tr>
+                                <td>{{projet.id}}</td>
+                                <td>{{projet.NomProjet }}</td>
+                                <td>{{ projet.NomEncadrant }}</td>
+                                <td>{{projet.Outlis}}</td>
+                                <td>{{projet.Description}}</td>
+                                <td>{{projet.etat}}</td>
+                                <td>
+                                    <a class="btn btn-info" href="{{ path('choisir',{'id':projet.id}) }}">Choisir</a>
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="5">Aucun Projet</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}
